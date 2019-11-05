@@ -1,26 +1,27 @@
-import { ApolloServer, gql } from 'apollo-server-micro';
-import '../../lib/mongoose'
+import { ApolloServer, gql } from 'apollo-server-micro'
+import connectDB from '../../lib/mongoose'
 
 const typeDefs = gql`
   type Query {
     sayHello: String
   }
-`;
+`
 
 const resolvers = {
   Query: {
     sayHello: () => {
-      return 'Hello Level Up!';
-    }
-  }
-};
+      return 'Hello Level Up!'
+    },
+  },
+}
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
 export const config = {
   api: {
-    bodyParser: false
-  }
-};
+    bodyParser: false,
+  },
+}
 
-export default apolloServer.createHandler({ path: '/api/graphql' });
+const server = apolloServer.createHandler({ path: '/api/graphql' })
+export default connectDB(server)
