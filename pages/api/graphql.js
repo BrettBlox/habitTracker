@@ -10,7 +10,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     sayHello: () => {
-      return 'Hello Level Up!'
+      return 'Hello!'
     },
   },
 }
