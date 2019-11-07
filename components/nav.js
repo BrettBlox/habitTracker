@@ -1,16 +1,16 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
 
 const Nav = () => (
   <nav>
     <ul>
       <li>
-        <Link href="/">
+        <Link href='/'>
           <a>Home</a>
         </Link>
       </li>
       <li>
-        <Link href="/about">
+        <Link href='/about'>
           <a>About</a>
         </Link>
       </li>
@@ -43,6 +43,6 @@ const Nav = () => (
       }
     `}</style>
   </nav>
-);
+)
 
-export default Nav;
+export default Nav

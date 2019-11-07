@@ -1,3 +1,4 @@
+// Database collection
 import mongoose, { Schema } from 'mongoose'
 
 export const HabitsSchema = new Schema({
@@ -7,4 +8,4 @@ export const HabitsSchema = new Schema({
   },
 })
 
-export default mongoose.models.habits || mongoose.model('habits', HabitSchema)
+export default mongoose.models.habits || mongoose.model('habits', HabitsSchema)
