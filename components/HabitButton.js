@@ -27,13 +27,43 @@ const REMOVE_EVENT = gql`
   }
 `
 
-const HabitButton = ({ date }) => {
+const HabitButton = ({ date, habitId }) => {
+  const [addEvent] = useMutation(ADD_EVENT, {
+    refetchQueries: ['getHabits'],
+  })
+  const [removeEvent] = useMutation(REMOVE_EVENT, {
+    refetchQueries: ['getHabits'],
+  })
+  const found = false
+
   return (
     <span>
       {date.getMonth() + 1}/{date.getDate()}
-      <button onClick={() => setComplete(!complete)}>
-        {complete ? 'X' : 'O'}
-      </button>
+      {found ? (
+        <button
+          onClick={() =>
+            removeEvent({
+              variables: {
+                habitId,
+                eventId: 'asdfasdfasdf',
+              },
+            })
+          }>
+          X
+        </button>
+      ) : (
+        <button
+          onClick={() =>
+            addEvent({
+              variables: {
+                habitId,
+                date,
+              },
+            })
+          }>
+          O
+        </button>
+      )}
       <style jsx>
         {`
           span {
