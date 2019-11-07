@@ -9,7 +9,7 @@ input HabitInput {
 }
 
 type Mutation {
-  addHabit(habit: HabitInput): Habit!
+  addHabit(habit: HabitInput): Habit
 }
 
 type Query {
