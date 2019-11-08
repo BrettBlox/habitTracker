@@ -44,6 +44,7 @@ const Home = () => {
         .list {
           max-width: 600px;
           margin: 0 auto;
+          margin-bottom: 10rem;
         }
       `}</style>
     </Layout>
