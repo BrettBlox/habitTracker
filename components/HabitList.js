@@ -22,7 +22,6 @@ const HabitList = () => {
     console.log(error)
     return <section />
   }
-
   const { habits } = data
 
   return (

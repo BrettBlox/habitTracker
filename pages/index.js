@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <Layout>
       <div className='hero'>
-        <h1 className='title'>Habits</h1>
+        <h1 className='title'>Level Up Your Life</h1>
         <div className='list'>
           <HabitForm />
           <HabitList />
@@ -44,7 +44,6 @@ const Home = () => {
         .list {
           max-width: 600px;
           margin: 0 auto;
-          margin-bottom: 160px;
         }
       `}</style>
     </Layout>

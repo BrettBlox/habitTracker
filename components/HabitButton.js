@@ -1,5 +1,5 @@
-import { useMutation } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 const ADD_EVENT = gql`
   mutation addEvent($date: Date, $habitId: ID) {
@@ -12,7 +12,7 @@ const ADD_EVENT = gql`
       }
     }
   }
-`
+`;
 
 const REMOVE_EVENT = gql`
   mutation removeEvent($eventId: ID, $habitId: ID) {
@@ -25,30 +25,35 @@ const REMOVE_EVENT = gql`
       }
     }
   }
-`
+`;
 
-const HabitButton = ({ date, habitId }) => {
+const HabitButton = ({ date, habitId, events }) => {
   const [addEvent] = useMutation(ADD_EVENT, {
-    refetchQueries: ['getHabits'],
-  })
+    refetchQueries: ['getHabits']
+  });
   const [removeEvent] = useMutation(REMOVE_EVENT, {
-    refetchQueries: ['getHabits'],
-  })
-  const found = false
+    refetchQueries: ['getHabits']
+  });
+
+  const foundDate = events.find(event => {
+    const eventDate = new Date(event.date);
+    return eventDate.getDate() === date.getDate();
+  });
 
   return (
     <span>
       {date.getMonth() + 1}/{date.getDate()}
-      {found ? (
+      {foundDate ? (
         <button
           onClick={() =>
             removeEvent({
               variables: {
                 habitId,
-                eventId: 'asdfasdfasdf',
-              },
+                eventId: foundDate._id
+              }
             })
-          }>
+          }
+        >
           X
         </button>
       ) : (
@@ -57,10 +62,11 @@ const HabitButton = ({ date, habitId }) => {
             addEvent({
               variables: {
                 habitId,
-                date,
-              },
+                date
+              }
             })
-          }>
+          }
+        >
           O
         </button>
       )}
@@ -80,7 +86,7 @@ const HabitButton = ({ date, habitId }) => {
         `}
       </style>
     </span>
-  )
-}
+  );
+};
 
-export default HabitButton
+export default HabitButton;
