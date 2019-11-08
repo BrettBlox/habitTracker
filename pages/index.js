@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <Layout>
       <div className='hero'>
-        <h1 className='title'>Level Up Your Life</h1>
+        <h1 className='title'>Habits</h1>
         <div className='list'>
           <HabitForm />
           <HabitList />
